@@ -75,8 +75,16 @@ async function main()
     // console.log("Id y nota");
     // let sql = "SELECT id_estudiante, AVG(nota) AS media_arit FROM notas WHERE YEAR(fecha) = YEAR(CURDATE()) - 1 GROUP BY id_estudiante;"
     // console.log("Media aritmetica");
-    let [result] = await connection.query(sql);
+    // let [result] = await connection.query(sql);
+    
+    
+    //RETOS DIA 3
+    // let sql = "SELECT apellido1, apellido2, title FROM alumnos AS a INNER JOIN subjets AS m ON (a.idalumno = m.idsubjet)"
+    // console.log("tabla creada");
 
+    // let sql ="SELECT nombre, apellido1, title FROM profesores AS t INNER JOIN subjets AS m ON (t.idprofe = m.idsubjet)"
+    // console.log("tabla profes creada");
+    let [result] = await connection.query(sql);
     // console.log(result);
     await connection.end()
 }
