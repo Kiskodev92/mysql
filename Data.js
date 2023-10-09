@@ -84,6 +84,8 @@ async function main()
 
     // let sql ="SELECT nombre, apellido1, title FROM profesores AS t INNER JOIN subjets AS m ON (t.idprofe = m.idsubjet)"
     // console.log("tabla profes creada");
+    let sql = "SELECT COUNT(a.idalumno),s.title,p.nombre ,p.apellido1 FROM alumnos  AS a INNER JOIN cursos AS c on (a.idalumno =  c.idCursos) INNER JOIN subprof AS z ON (c.idCursos = z.id_curso) INNER JOIN subjets AS s ON (z.idsubjets = s.idsubjet) INNER JOIN profesores AS p ON (z.idteacher = p.idprofe) GROUP BY s.title,p.nombre ,p.apellido1"
+    console.log("tabla profes y asignatura creada")
     let [result] = await connection.query(sql);
     // console.log(result);
     await connection.end()
