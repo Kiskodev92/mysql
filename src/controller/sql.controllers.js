@@ -61,14 +61,15 @@ const putAlum = async (req, res) =>
 {
     try{
         console.log(req.body);
-        let params = [req.body.idalumno,
+        let params = [
                     req.body.apellido1,
                     req.body.apellido2,
                     req.body.id_cursoalum,
-                    req.body.Start_Bootcamp]
+                    req.body.Start_Bootcamp,
+                    req.body.idalumno]
         
-        let sql = "UPDATE alumnos SET idalumno = COALESCE(?, idalumno) , " +
-                "apellido1 = COALESCE(?, apellido1) , " +
+        let sql =  
+                "UPDATE alumnos SET apellido1 = COALESCE(?, apellido1) , " +
                 "apellido2 = COALESCE(?, apellido2) , " +
                 "id_cursoalum = COALESCE(?, id_cursoalum) , " +
                 "Start_Bootcamp = COALESCE(?, Start_Bootcamp) WHERE idalumno = ? ";

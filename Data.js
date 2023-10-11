@@ -79,7 +79,7 @@ async function main()
     
     
     //RETOS DIA 3
-    // let sql = "SELECT apellido1, apellido2, title FROM alumnos AS a INNER JOIN subjets AS m ON (a.idalumno = m.idsubjet)"
+    // let sql = "SELECT apellido1, apellido2, title FROM alumnos INNER JOIN cursos ON  (alumnos.id_cursoalum = cursos.idCursos ) INNER JOIN subprof ON ( subprof.id_curso = cursos.idCursos ) INNER JOIN subjets ON (subjets.idsubjet = subprof.idsubjets) ORDER BY apellido1"
     // console.log("tabla creada");
 
     // let sql ="SELECT nombre, apellido1, title FROM profesores AS t INNER JOIN subjets AS m ON (t.idprofe = m.idsubjet)"
