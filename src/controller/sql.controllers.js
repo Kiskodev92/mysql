@@ -37,14 +37,11 @@ const postAlum = async (req, res) =>
 {
     try{
         console.log(req.body);
-        let sql = "INSERT INTO alumnos (idalumno, apellido1, apellido2, id_cursoalum, Start_Bootcamp) "+
-                "VALUES ('" + req.body.idalumno + "', '" +
-                            req.body.apellido1 + "', '" +
-                            req.body.apellido2 + "', '" +
-                            req.body.id_cursoalum + "', '" +
-                            req.body.Start_Bootcamp + "')";
-        console.log(sql);
-        let [result] = await pool.query(sql);
+        let sql = "INSERT INTO alumnos (apellido1, apellido2, id_cursoalum, Start_Bootcamp) "+
+                "VALUES (?,?,?,?)";
+        let params = [req.body.apellido1, req.body.apellido2, req.body.id_cursoalum, req.body.Start_Bootcamp]
+        console.log(sql, params);
+        let [result] = await pool.query(sql, params);
         console.log(result);
 
         if(result.insertId)
@@ -88,7 +85,7 @@ const deleteAlum = async (req, res) =>
         console.log(req.body);
         let sql = "DELETE FROM alumnos WHERE idalumno = ?";
         console.log(sql);
-        let [result] = await pool.query(sql,[req.body.id]);
+        let [result] = await pool.query(sql,[req.body.idalumno]);
         res.send(result)
     }
     catch(err){
